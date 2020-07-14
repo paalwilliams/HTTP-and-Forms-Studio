@@ -1,19 +1,59 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <head>
-	<meta charset="utf-8">
-	<script>
-		// TODO: create a handler
-    window.addEventListener("load", function(){
-        // TODO: register the handler
+  <meta charset="utf-8" />
+  <script>
+    function setSearchEngine() {
+      let actionURL;
+      let engine = document.querySelector('input[name=engine]:checked');
+      let query = document.getElementById('query');
+      let actions = {
+        google: 'https://www.google.com/',
+        bing: 'https://www.bing.com/',
+        duckduckgo: 'https://www.duckduckgo.com',
+        ask: 'https://www.ask.com/search',
+      };
+      actionURL = actions[engine.value];
+      document.getElementById('searchForm').setAttribute('action', actionURL);
+    }
+    // TODO: create a handler
+    window.addEventListener('submit', function (event) {
+      let query = document.getElementById('query');
+      if (query.value === '') {
+        alert('Please enter a valid search term.');
+        document.getElementById('searchForm');
+      } else {
+        setSearchEngine();
+      }
     });
-	</script>
+  </script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
-	<form id="searchForm">
-    <!-- TODO: add form elements -->
-	</form>
-
+  <form id="searchForm" method="get">
+    <input
+      type="text"
+      name="q"
+      id="query"
+      placeholder="what would you like to search for?"
+    />
+    <label for="">
+      Google
+      <input type="radio" name="engine" value="google" />
+    </label>
+    <label for="">
+      DuckDuckGo
+      <input type="radio" name="engine" value="duckduckgo" />
+    </label>
+    <label for="">
+      Bing
+      <input type="radio" name="engine" value="bing" />
+    </label>
+    <label for="">
+      Ask
+      <input type="radio" name="engine" value="ask" />
+    </label>
+    <button>Go!</button>
+  </form>
 </body>
