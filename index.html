@@ -18,8 +18,18 @@
     }
     // TODO: create a handler
     window.addEventListener('submit', function (event) {
+      let radioChecked = false;
+      let boxes = document.getElementsByClassName('radio');
       let query = document.getElementById('query');
-      if (query.value === '') {
+      for (let i = 0; i < boxes.length; i++) {
+        if (boxes[i].checked) {
+          radioChecked = true;
+        }
+      }
+
+      if (radioChecked == false) {
+        alert('Please select a search engine.');
+      } else if (query.value === '') {
         alert('Please enter a valid search term.');
         document.getElementById('searchForm');
       } else {
@@ -40,19 +50,19 @@
     />
     <label for="">
       Google
-      <input type="radio" name="engine" value="google" />
+      <input type="radio" name="engine" value="google" class="radio" />
     </label>
     <label for="">
       DuckDuckGo
-      <input type="radio" name="engine" value="duckduckgo" />
+      <input type="radio" name="engine" value="duckduckgo" class="radio" />
     </label>
     <label for="">
       Bing
-      <input type="radio" name="engine" value="bing" />
+      <input type="radio" name="engine" value="bing" class="radio" />
     </label>
     <label for="">
       Ask
-      <input type="radio" name="engine" value="ask" />
+      <input type="radio" name="engine" value="ask" class="radio" />
     </label>
     <button>Go!</button>
   </form>
