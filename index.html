@@ -8,10 +8,10 @@
       let engine = document.querySelector('input[name=engine]:checked');
       let query = document.getElementById('query');
       let actions = {
-        google: 'https://www.google.com/',
+        google: 'https://www.google.com/search',
         bing: 'https://www.bing.com/',
-        duckduckgo: 'https://www.duckduckgo.com',
-        ask: 'https://www.ask.com/search',
+        duckduckgo: 'https://www.duckduckgo.com/',
+        ask: 'https://www.ask.com/web',
       };
       actionURL = actions[engine.value];
       document.getElementById('searchForm').setAttribute('action', actionURL);
